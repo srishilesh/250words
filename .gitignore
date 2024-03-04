@@ -1,6 +1,7 @@
 /venv
 todo.md
-/250words/.env
+/src/.env
+*.sh
 
 *.pyc
 __pycache__/

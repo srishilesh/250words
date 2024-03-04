@@ -1,5 +1,5 @@
 [project]
-name = "250words"
+name = "src"
 version = "0.0.1"
 description = "Write 250 words everyday"
 authors = [
@@ -8,9 +8,16 @@ authors = [
 readme = "README.md"
 license = {file = "LICENSE.txt"}
 dependencies = [
-    "flask",
+    "flask", "waitress"
 ]
 
 [build-system]
 requires = ["flit_core<4"]
 build-backend = "flit_core.buildapi"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["src"]

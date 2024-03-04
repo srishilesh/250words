@@ -2,7 +2,7 @@ import functools
 from flask import Blueprint, request, flash, render_template, redirect, url_for, session, g
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from db import get_db
+from .db import get_db
 
 bp = Blueprint("auth", __name__, url_prefix="/auth")
 
@@ -24,9 +24,9 @@ def register():
         error = None
 
         if not username:
-            error = "Username is required"
+            error = "Username is required."
         elif not password:
-            error = "Password is required"
+            error = "Password is required."
 
         if error is None:
             try:
@@ -56,15 +56,15 @@ def login():
         db = get_db()
         error = None
 
-        user = db.execute("SELECT * FROM user WHERE username = ?", (username)).fetchone()
+        user = db.execute("SELECT * FROM user WHERE username = ?", (username,)).fetchone()
         if user is None:
-            error = "Incorrect username"
+            error = "Incorrect username."
         elif not check_password_hash(user["password"], password):
-            error = "Incorrect password"
+            error = "Incorrect password."
         
         if error is None:
             session.clear()
-            session['user_id'] = user[id]
+            session['user_id'] = user["id"]
             return redirect(url_for('index'))
         flash(error)
     
@@ -83,7 +83,7 @@ def load_logged_in_user():
     if user_id is None:
         g.user = None
     else:
-        g.user = get_db().execute("SELECT * FROM user WHERE id=?", (user_id)).fetchone()
+        g.user = get_db().execute("SELECT * FROM user WHERE id=?", (user_id,)).fetchone()
 
 @bp.route("/logout")
 def logout():
