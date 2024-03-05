@@ -1,0 +1,19 @@
+{
+  "name": "250words",
+  "version": "1.0.0",
+  "description": "Think out loud - write 250 words everyday. Inspired by [750 words](https://750words.com)",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "buildcss": "npx tailwindcss -i ./src/static/input.css -o ./src/static/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}

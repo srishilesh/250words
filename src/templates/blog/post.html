@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}{{ post['title']}}{% endblock %}</h1>
+    <div class="post-metadata">
+        <p>Author: {{ post['username']}}</p>
+        <p>Timestamp: {{ post['created']}}</p>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <p>{{ post['body'] }}</p>
+    <form action="{{ url_for('blog.display', id=post['id']) }}" method="post">
+        <input type="submit" value="Home">
+    </form>
+{% endblock %}

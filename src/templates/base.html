@@ -1,6 +1,7 @@
 <!doctype html>
 <title>{% block title %}{% endblock %} - 250 Words</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link href="{{url_for('static', filename='style.css')}}" rel="stylesheet">
+<!-- <link href="{{url_for('static', filename='output.css')}}" rel="stylesheet"> -->
 <nav>
   <h1><a href="{{ url_for('index') }}">250 Words</a></h1>
   <ul>
